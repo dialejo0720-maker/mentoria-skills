@@ -1,0 +1,41 @@
+{
+  "name": "mentoria",
+  "owner": {
+    "name": "Diego"
+  },
+  "metadata": {
+    "description": "Skills de la mentoría: sistemas guiados para crear, lanzar y escalar productos digitales en LATAM.",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "ecosistema",
+      "source": "./",
+      "description": "Construye de cero el ecosistema completo de un producto digital: espionaje de competidores, idea de producto con método propio (80% modelado / 20% innovación), las 8 keys, landing page en HTML, prompts de imágenes y videos para anuncios a partir de las referencias del competidor, campañas de Meta CBO y luego ABO para LATAM, creación del producto real y de los order bumps y upsells. Proceso guiado de 10 fases con compuertas.",
+      "version": "1.0.0",
+      "author": {
+        "name": "Diego"
+      },
+      "repository": "https://github.com/dialejo0720-maker/mentoria-skills",
+      "category": "marketing",
+      "tags": [
+        "infoproductos",
+        "producto-digital",
+        "embudo",
+        "landing-page",
+        "meta-ads",
+        "hotmart",
+        "copywriting",
+        "espionaje-competencia",
+        "latam",
+        "espanol"
+      ],
+      "keywords": [
+        "digital-product-launch",
+        "sales-funnel",
+        "competitor-research",
+        "claude-code-skill"
+      ]
+    }
+  ]
+}
