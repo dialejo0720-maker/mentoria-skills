@@ -1,0 +1,50 @@
+# ─────────────────────────────────────────────────────────────
+#  Configuración de tu bot.
+#  Esto lo llena el asistente cuando corres /mi-bot.
+#  No hace falta que lo edites a mano.
+# ─────────────────────────────────────────────────────────────
+
+name = "mi-bot"
+main = "src/index.js"
+compatibility_date = "2026-08-01"
+compatibility_flags = ["nodejs_compat"]
+
+# El cerebro GRATIS del bot (la IA incluida de Cloudflare).
+# No cuesta nada y no pide tarjeta.
+[ai]
+binding = "IA"
+# Le dice a wrangler que la IA vive en Cloudflare (hace falta para poder probar en tu computador)
+remote = true
+
+# La memoria del bot: aquí se guardan las conversaciones y los contactos.
+# El asistente reemplaza el nombre y el id cuando crea tu base de datos.
+[[d1_databases]]
+binding = "DB"
+database_name = "mi-bot-datos"
+database_id = "PENDIENTE-LO-LLENA-EL-ASISTENTE"
+
+[vars]
+# Cómo se llama tu bot cuando saluda
+NOMBRE_BOT = "Ana"
+# Cómo se llama tu negocio
+NOMBRE_NEGOCIO = "Mi Negocio"
+# Tu zona horaria (para que entienda "mañana" y "el jueves")
+ZONA_HORARIA = "America/Bogota"
+# Cuál cerebro usa: "gratis" (IA de Cloudflare) o "claude" (tu propia llave)
+CEREBRO = "gratis"
+# Modelo de Claude, solo se usa si CEREBRO = "claude"
+MODELO_CLAUDE = "claude-opus-5"
+
+# ─────────────────────────────────────────────────────────────
+#  Llaves secretas (nunca se escriben aquí).
+#  Se guardan con: npx wrangler secret put NOMBRE
+#
+#  CLAVE_PANEL          — tu contraseña para entrar al panel
+#  ANTHROPIC_API_KEY    — solo si le subes el cerebro a Claude
+#  WHATSAPP_TOKEN       — token de Meta para WhatsApp
+#  WHATSAPP_PHONE_ID    — id del número de WhatsApp
+#  WHATSAPP_VERIFICAR   — palabra secreta para conectar el webhook
+# ─────────────────────────────────────────────────────────────
+
+[observability]
+enabled = true

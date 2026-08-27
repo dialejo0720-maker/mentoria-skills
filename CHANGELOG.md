@@ -1,5 +1,26 @@
 # Cambios
 
+## mi-bot 1.0.0
+
+Primera versión de `/mi-bot`: bot de WhatsApp con IA para negocios, pensado para
+gente que no programa.
+
+- Flujo guiado de 6 fases, una pregunta por mensaje, en español sencillo
+- El bot vive en la cuenta gratis de Cloudflare del dueño: **sin tarjeta de crédito**
+- Cerebro gratis con la IA de Cloudflare (Llama 3.3 70B), con modelo de respaldo
+  automático si el principal está saturado, y opción de subirlo a Claude
+- Panel propio con 6 pestañas: Inicio, Conversaciones, Contactos, Mi negocio,
+  Probar el bot y Conexiones — con letra y botones grandes, pensados para leerse bien
+- Los datos del negocio viven en la base de datos, no en archivos: el dueño cambia
+  precios y horarios desde el panel y el bot los aplica al instante, sin publicar de nuevo
+- Captura de contactos automática (nombre, teléfono, interés) y descarga a Excel
+- El dueño puede tomar el control de un chat y contestar él por WhatsApp
+- Canales: prueba desde el panel, chat para página web (una línea de código) y
+  WhatsApp por conexión directa con Meta
+- Guías paso a paso para crear la cuenta de Cloudflare, conectar WhatsApp y resolver fallas
+- El marketplace pasa a tener dos plugins: `ecosistema` y `mi-bot`, instalables por separado
+- Los instaladores manuales ahora aceptan el nombre de la skill
+
 ## 1.0.0
 
 Primera versión de `/ecosistema`.

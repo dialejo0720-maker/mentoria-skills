@@ -5,6 +5,7 @@ Sistemas guiados para Claude Code. Se instalan una vez y quedan disponibles en t
 | Skill | Qué hace |
 |---|---|
 | `/ecosistema` | Construye de cero el ecosistema completo de un producto digital: competencia → producto → keys → landing → creativos → campañas → producto real → order bumps |
+| `/mi-bot` | Arma un bot de WhatsApp con IA para tu negocio, gratis y en tu propia cuenta. Con panel para ver conversaciones y contactos, y para cambiar precios sin tocar código |
 
 ---
 
@@ -12,17 +13,23 @@ Sistemas guiados para Claude Code. Se instalan una vez y quedan disponibles en t
 
 Necesitas **Claude Code** instalado. Se descarga en [claude.com/code](https://claude.com/code).
 
-Abre Claude Code y escribe estos dos comandos, uno después del otro:
+Abre Claude Code y escribe primero esto:
 
 ```
 /plugin marketplace add dialejo0720-maker/mentoria-skills
 ```
 
+Y después, la skill que quieras (puedes instalar las dos):
+
 ```
 /plugin install ecosistema@mentoria
 ```
 
-Listo. Ya puedes escribir `/ecosistema` en cualquier proyecto.
+```
+/plugin install mi-bot@mentoria
+```
+
+Listo. Ya puedes escribir `/ecosistema` o `/mi-bot` en cualquier proyecto.
 
 > Si te pregunta si confías en el marketplace, acepta.
 > Después de instalar, cierra Claude Code y vuélvelo a abrir.
@@ -56,17 +63,26 @@ Cuando salga una versión nueva:
    ```
    powershell -ExecutionPolicy Bypass -File .\instalar.ps1
    ```
+   Para instalar la otra skill, agrégale el nombre:
+   ```
+   powershell -ExecutionPolicy Bypass -File .\instalar.ps1 -Skill mi-bot
+   ```
 4. **Mac / Linux:** abre la terminal en esa carpeta y ejecuta:
    ```
    bash instalar.sh
    ```
+   Para la otra skill:
+   ```
+   bash instalar.sh mi-bot
+   ```
 
-También puedes copiar a mano la carpeta `skills/ecosistema` dentro de:
+También puedes copiar a mano la carpeta de la skill dentro de:
 
 - **Windows:** `C:\Users\TU_USUARIO\.claude\skills\`
 - **Mac / Linux:** `~/.claude/skills/`
 
-Debe quedar así: `.claude/skills/ecosistema/SKILL.md`
+Debe quedar así: `.claude/skills/ecosistema/SKILL.md` (o `.claude/skills/mi-bot/SKILL.md`).
+La carpeta de `/mi-bot` está en `plugins/mi-bot/skills/mi-bot`.
 
 ---
 
@@ -134,6 +150,62 @@ Banana / Gemini (imágenes) y Veo, Sora o Kling (video), construidos a partir de
 que ya le funcionan a tu competencia.
 
 **¿Puedo saltarme fases?** Puedes, pero te dice el riesgo primero y lo deja anotado.
+
+---
+
+## Cómo se usa `/mi-bot`
+
+1. Crea una carpeta para tu bot y ábrela con Claude Code
+2. Escribe `/mi-bot`
+3. Claude te va a preguntar por tu negocio, **una cosa a la vez**, y él hace todo lo demás
+
+En media hora tienes tu asistente contestando. No necesitas saber programar ni escribir
+un solo comando.
+
+### Lo que hace tu bot
+
+- Le contesta a tus clientes por WhatsApp con la información **real** de tu negocio
+- **Nunca inventa** precios ni horarios: si no lo sabe, ofrece pasarle el mensaje a un humano
+- Apunta a la gente interesada, con su nombre, teléfono y qué quería
+- Te avisa cuando alguien quiere hablar con una persona de verdad
+
+### Tu panel
+
+Entras desde tu celular o tu computador, con una contraseña:
+
+| Pestaña | Para qué |
+|---|---|
+| Inicio | Cuánta gente te escribió, cuántos contactos nuevos |
+| Conversaciones | Los chats completos. Puedes tomar el control y contestar tú |
+| Contactos | La gente interesada, con botón para escribirle. Se descarga a Excel |
+| Mi negocio | Cambias precios, horarios y reglas. **El bot lo aprende al instante** |
+| Probar el bot | Le escribes como si fueras un cliente, para ver qué contesta |
+| Conexiones | Qué está conectado y la línea para poner el chat en tu página web |
+
+### Lo que cuesta
+
+**Nada.** Ni tarjeta de crédito. El bot vive en tu propia cuenta gratis de Cloudflare
+y usa la IA que Cloudflare regala (aguanta unas 300 conversaciones al día).
+
+Si algún día quieres que conteste mejor, se le puede poner el cerebro de Claude por
+unos 2 dólares al mes. Es opcional y se cambia en un minuto.
+
+### Preguntas frecuentes
+
+**¿Necesito una cuenta de WhatsApp Business?** Para probarlo no. Meta regala un número
+de prueba con el que ves tu bot funcionando el mismo día. Tu número real se conecta después.
+
+**¿Pierdo mi WhatsApp actual?** Un número que ya está en WhatsApp no se puede usar para
+el bot sin borrar esa cuenta. Por eso lo más tranquilo es un chip nuevo solo para el bot.
+
+**¿El bot puede inventarse cosas?** Está instruido para no hacerlo, y si no sabe algo
+ofrece pasar el mensaje. Si aun así se equivoca, casi siempre es que falta ese dato en
+la pestaña Mi negocio.
+
+**¿Puedo cambiar los precios sin llamar a nadie?** Sí, esa es la idea. Entras al panel,
+pestaña Mi negocio, cambias y guardas.
+
+**¿Puedo tener un bot para cada negocio?** Sí. Carpeta nueva y `/mi-bot` otra vez.
 
 ---
 

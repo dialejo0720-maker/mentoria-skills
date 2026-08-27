@@ -1,8 +1,13 @@
-# Instalador manual de la skill "ecosistema" para Claude Code — Windows
-# Solo hace falta si NO quieres instalarla como plugin.
+# Instalador manual de las skills de la mentoria para Claude Code — Windows
+# Solo hace falta si NO quieres instalarlas como plugin.
 #
-# Uso:  clic derecho -> Ejecutar con PowerShell
+# Uso:  clic derecho -> Ejecutar con PowerShell        (instala ecosistema)
 # O:    powershell -ExecutionPolicy Bypass -File .\instalar.ps1
+# O:    powershell -ExecutionPolicy Bypass -File .\instalar.ps1 -Skill mi-bot
+
+param(
+    [string]$Skill = "ecosistema"
+)
 
 $ErrorActionPreference = "Stop"
 
@@ -12,7 +17,7 @@ function Pausa {
 }
 
 Write-Host ""
-Write-Host "  Instalador de la skill: ecosistema" -ForegroundColor Cyan
+Write-Host "  Instalador de la skill: $Skill" -ForegroundColor Cyan
 Write-Host "  ----------------------------------"
 Write-Host ""
 
@@ -21,10 +26,12 @@ $raiz = $PSScriptRoot
 if ([string]::IsNullOrEmpty($raiz)) { $raiz = (Get-Location).Path }
 $raiz = [System.IO.Path]::GetFullPath($raiz)
 
-# La skill puede estar en skills\ecosistema (repo) o junto al script (carpeta suelta)
+# La skill puede estar en skills\<nombre>, en plugins\<nombre>\skills\<nombre>,
+# o junto al script (si bajaron la carpeta suelta)
 $origen = $null
 $candidatos = @(
-    (Join-Path $raiz "skills\ecosistema"),
+    (Join-Path $raiz "skills\$Skill"),
+    (Join-Path $raiz "plugins\$Skill\skills\$Skill"),
     $raiz
 )
 foreach ($c in $candidatos) {
@@ -32,22 +39,23 @@ foreach ($c in $candidatos) {
 }
 
 if ($null -eq $origen) {
-    Write-Host "  ERROR: no encuentro SKILL.md." -ForegroundColor Red
+    Write-Host "  ERROR: no encuentro la skill '$Skill'." -ForegroundColor Red
     Write-Host "  Ejecuta el instalador desde la raiz de la carpeta descargada."
+    Write-Host "  Skills disponibles: ecosistema, mi-bot"
     Write-Host ""
     Pausa
     exit 1
 }
 
 $carpetaSkills = Join-Path $env:USERPROFILE ".claude\skills"
-$destino = [System.IO.Path]::GetFullPath((Join-Path $carpetaSkills "ecosistema"))
+$destino = [System.IO.Path]::GetFullPath((Join-Path $carpetaSkills $Skill))
 
 # Ya esta instalada en el sitio correcto
 if ($origen.TrimEnd('\') -ieq $destino.TrimEnd('\')) {
     Write-Host "  La skill ya esta instalada en:" -ForegroundColor Green
     Write-Host "  $destino"
     Write-Host ""
-    Write-Host "  Abre Claude Code y escribe /ecosistema"
+    Write-Host "  Abre Claude Code y escribe /$Skill"
     Write-Host ""
     Pausa
     exit 0
@@ -64,7 +72,7 @@ if (Test-Path $destino) {
     $respaldo = "$destino.backup"
     if (Test-Path $respaldo) { Remove-Item -Path $respaldo -Recurse -Force }
     Move-Item -Path $destino -Destination $respaldo
-    Write-Host "  Version anterior respaldada en ecosistema.backup" -ForegroundColor Yellow
+    Write-Host "  Version anterior respaldada en $Skill.backup" -ForegroundColor Yellow
 }
 
 # Copiar
@@ -72,23 +80,22 @@ Copy-Item -Path $origen -Destination $destino -Recurse -Force
 
 # Verificar
 if (Test-Path (Join-Path $destino "SKILL.md")) {
-    $refs = (Get-ChildItem (Join-Path $destino "references") -File).Count
-    $plas = (Get-ChildItem (Join-Path $destino "plantillas") -File).Count
+    $refs = @(Get-ChildItem (Join-Path $destino "references") -File -ErrorAction SilentlyContinue).Count
     Write-Host ""
     Write-Host "  LISTO" -ForegroundColor Green
     Write-Host "  Instalada en: $destino"
-    Write-Host "  $refs archivos de referencia, $plas plantillas."
+    Write-Host "  $refs archivos de referencia."
     Write-Host ""
     Write-Host "  Como se usa:" -ForegroundColor Cyan
     Write-Host "    1. Crea una carpeta para tu proyecto"
     Write-Host "    2. Abrela con Claude Code"
-    Write-Host "    3. Escribe:  /ecosistema"
+    Write-Host "    3. Escribe:  /$Skill"
     Write-Host ""
     Write-Host "  Si Claude Code ya estaba abierto, cierralo y vuelvelo a abrir."
 } else {
     Write-Host ""
     Write-Host "  ERROR: la copia no se completo." -ForegroundColor Red
-    Write-Host "  Copia manualmente la carpeta 'skills\ecosistema' dentro de:"
+    Write-Host "  Copia manualmente la carpeta de la skill dentro de:"
     Write-Host "  $carpetaSkills"
 }
 

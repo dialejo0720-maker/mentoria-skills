@@ -36,6 +36,34 @@
         "competitor-research",
         "claude-code-skill"
       ]
+    },
+    {
+      "name": "mi-bot",
+      "source": "./plugins/mi-bot",
+      "description": "Arma un bot de WhatsApp con IA para cualquier negocio, gratis y en la propia cuenta de Cloudflare del dueño. Hecho para gente que no programa: el asistente corre todos los comandos y entrevista al dueño en español sencillo, una pregunta a la vez. Trae un panel donde el dueño ve conversaciones, contactos y cambia precios y horarios sin tocar código.",
+      "version": "1.0.0",
+      "author": {
+        "name": "Diego"
+      },
+      "repository": "https://github.com/dialejo0720-maker/mentoria-skills",
+      "category": "productivity",
+      "tags": [
+        "whatsapp",
+        "chatbot",
+        "bot-whatsapp",
+        "atencion-al-cliente",
+        "cloudflare",
+        "negocios-locales",
+        "sin-codigo",
+        "latam",
+        "espanol"
+      ],
+      "keywords": [
+        "whatsapp-bot",
+        "customer-support",
+        "cloudflare-workers",
+        "claude-code-skill"
+      ]
     }
   ]
 }
