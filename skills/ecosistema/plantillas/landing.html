@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{TITULO}} — {{PROMESA_CORTA}}</title>
+<meta name="description" content="{{PROMESA_COMPLETA}}">
+<meta property="og:title" content="{{TITULO}}">
+<meta property="og:description" content="{{PROMESA_COMPLETA}}">
+<meta property="og:image" content="img/og.jpg">
+<meta property="og:type" content="website">
+
+<!-- ===== Meta Pixel — reemplazar TU_PIXEL_ID ===== -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','TU_PIXEL_ID');
+fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=TU_PIXEL_ID&ev=PageView&noscript=1"></noscript>
+<!-- ===== fin Pixel ===== -->
+
+<style>
+/* ====== PALETA — cambiar según nicho (ver references/04-landing.md) ====== */
+:root{
+  --bg:#FFFFFF;
+  --primario:#E84A1F;
+  --texto:#2D2D2D;
+  --suave:#F6F3F0;
+  --borde:#E5E0DA;
+  --oscuro:#111111;
+  --tenue:#6B6B6B;
+  --max:640px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);color:var(--texto);
+  font:400 17px/1.65 system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 20px}
+section{padding:44px 0}
+h1,h2,h3{line-height:1.2;letter-spacing:-.01em}
+h1{font-size:32px;font-weight:800;margin-bottom:14px}
+h2{font-size:25px;font-weight:800;margin-bottom:16px}
+h3{font-size:19px;font-weight:700;margin-bottom:8px}
+p{margin-bottom:16px}
+strong{font-weight:700}
+em{font-style:normal;background:linear-gradient(transparent 62%,rgba(232,74,31,.28) 0)}
+img{max-width:100%;height:auto;display:block;border-radius:10px}
+.centro{text-align:center}
+.tenue{color:var(--tenue);font-size:15px}
+.pre{font-size:14px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+     color:var(--primario);margin-bottom:10px}
+
+/* ====== Barra fija ====== */
+.barra{position:sticky;top:0;z-index:50;background:var(--oscuro);color:#fff;
+       text-align:center;font-size:14px;font-weight:600;padding:11px 16px}
+.barra span{color:#FFD166}
+
+/* ====== CTA ====== */
+.cta{display:block;background:var(--primario);color:#fff;text-decoration:none;
+     font-size:19px;font-weight:800;text-align:center;padding:19px 22px;border-radius:12px;
+     min-height:56px;box-shadow:0 4px 0 rgba(0,0,0,.18)}
+.cta:active{transform:translateY(2px);box-shadow:0 2px 0 rgba(0,0,0,.18)}
+.cta-sub{text-align:center;font-size:14px;color:var(--tenue);margin-top:10px}
+
+/* ====== Bloques ====== */
+.suave{background:var(--suave)}
+.oscuro{background:var(--oscuro);color:#fff}
+.oscuro h2{color:#fff}
+.oscuro .tenue{color:#B9B9B9}
+.caja{background:#fff;border:1px solid var(--borde);border-radius:14px;padding:22px;
+      margin-bottom:16px}
+.senal{border-left:3px solid var(--primario);padding-left:16px;margin-bottom:18px}
+
+/* ====== Pasos del método ====== */
+.paso{display:flex;gap:14px;margin-bottom:20px}
+.num{flex:0 0 34px;height:34px;border-radius:50%;background:var(--primario);color:#fff;
+     font-weight:800;display:flex;align-items:center;justify-content:center;font-size:16px}
+
+/* ====== Testimonios ====== */
+.testi{background:var(--suave);border-radius:14px;padding:20px;margin-bottom:14px}
+.estrellas{color:#F5A623;font-size:15px;letter-spacing:2px;margin-bottom:8px}
+.autor{font-size:14px;color:var(--tenue);margin-top:10px}
+
+/* ====== Tabla de valor ====== */
+table{width:100%;border-collapse:collapse;font-size:16px}
+td{padding:11px 0;border-bottom:1px solid var(--borde)}
+td:last-child{text-align:right;white-space:nowrap;color:var(--tenue)}
+tr.total td{font-weight:800;color:var(--texto);border-bottom:none;padding-top:16px}
+tr.hoy td{font-weight:800;color:var(--primario);font-size:20px;border:none;padding-top:0}
+.tachado{text-decoration:line-through;opacity:.55}
+
+/* ====== Listas sí/no ====== */
+ul{list-style:none}
+li{padding-left:30px;position:relative;margin-bottom:11px}
+.si li:before{content:"✓";position:absolute;left:0;color:#2A9D5C;font-weight:800}
+.no li:before{content:"✕";position:absolute;left:0;color:#C0392B;font-weight:800}
+
+/* ====== Garantía ====== */
+.garantia{border:2px dashed var(--primario);border-radius:16px;padding:26px;text-align:center}
+.sello{font-size:44px;font-weight:900;color:var(--primario);line-height:1}
+
+/* ====== FAQ ====== */
+details{border-bottom:1px solid var(--borde);padding:16px 0}
+summary{font-weight:700;cursor:pointer;list-style:none;font-size:17px;
+        display:flex;justify-content:space-between;gap:12px}
+summary::-webkit-details-marker{display:none}
+summary:after{content:"+";color:var(--primario);font-weight:800;font-size:22px;line-height:1}
+details[open] summary:after{content:"–"}
+details p{margin:12px 0 0;color:#4A4A4A}
+
+/* ====== Pagos ====== */
+.pagos{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:16px;
+       font-size:13px;color:var(--tenue)}
+
+@media(min-width:600px){
+  h1{font-size:40px} h2{font-size:30px} section{padding:56px 0}
+}
+</style>
+</head>
+<body>
+
+<!-- 1 · BARRA DE URGENCIA -->
+<div class="barra">{{PROMESA_CORTA}} · Hoy por <span>{{PRECIO}}</span></div>
+
+<!-- 2 · HERO -->
+<section>
+  <div class="wrap">
+    <p class="pre">{{PRE_HEADLINE}}</p>
+    <h1>{{HEADLINE_KEY1}}</h1>
+    <p>{{SUBHEADLINE_KEY7}}</p>
+    <img src="img/hero.webp" alt="{{ALT_HERO}}" fetchpriority="high">
+    <p style="margin-top:22px"></p>
+    <a class="cta" href="{{CHECKOUT}}" onclick="fbq('track','InitiateCheckout');">{{TEXTO_CTA}}</a>
+    <p class="cta-sub">Acceso inmediato · Garantía de {{DIAS_GARANTIA}} días</p>
+  </div>
+</section>
+
+<!-- 3 · AGITACIÓN -->
+<section class="suave">
+  <div class="wrap">
+    <h2>{{TITULO_AGITACION}}</h2>
+    <p>{{ESCENA_DEL_PROBLEMA}}</p>
+    <div class="senal"><strong>1.</strong> {{SENAL_1}}</div>
+    <div class="senal"><strong>2.</strong> {{SENAL_2}}</div>
+    <div class="senal"><strong>3.</strong> {{SENAL_3}}</div>
+    <p>{{CONSECUENCIA_FUTURA}}</p>
+  </div>
+</section>
+
+<!-- 4 · GIRO / PREGUNTA PARADÓJICA (KEY 2) -->
+<section>
+  <div class="wrap">
+    <h2>{{PREGUNTA_PARADOJICA}}</h2>
+    <p>{{RESPUESTA_AL_GIRO}}</p>
+  </div>
+</section>
+
+<!-- 5 · MECANISMO DEL PROBLEMA (KEY 4) -->
+<section class="suave">
+  <div class="wrap">
+    <p class="pre">Lo que nadie te explicó</p>
+    <h2>{{NOMBRE_MECANISMO_PROBLEMA}}</h2>
+    <p>{{QUE_ES}}</p>
+    <p>{{COMO_SE_INSTALO}}</p>
+    <p>{{POR_QUE_NO_LO_VEIAS}}</p>
+  </div>
+</section>
+
+<!-- 6 · TESTIMONIOS A (validan el mecanismo) -->
+<section>
+  <div class="wrap">
+    <div class="testi">
+      <div class="estrellas">★★★★★</div>
+      <p>"{{TESTIMONIO_1}}"</p>
+      <div class="autor">— {{NOMBRE_1}}, {{CIUDAD_1}}</div>
+    </div>
+    <div class="testi">
+      <div class="estrellas">★★★★★</div>
+      <p>"{{TESTIMONIO_2}}"</p>
+      <div class="autor">— {{NOMBRE_2}}, {{CIUDAD_2}}</div>
+    </div>
+  </div>
+</section>
+
+<!-- 7 · POR QUÉ FALLÓ LO ANTERIOR (KEY 6) -->
+<section>
+  <div class="wrap">
+    <h2>{{TITULO_POR_QUE_FALLO}}</h2>
+    <p>{{CAUSA_RAIZ_REPOSICIONADA}}</p>
+  </div>
+</section>
+
+<!-- 8 · EL MÉTODO (KEY 5) -->
+<section class="suave">
+  <div class="wrap">
+    <p class="pre">El método</p>
+    <h2>{{NOMBRE_DEL_METODO}}</h2>
+    <p>{{QUE_HACE_EL_METODO}}</p>
+
+    <div class="paso"><div class="num">1</div><div>
+      <h3>{{PASO_1}}</h3><p>{{DESC_PASO_1}}</p></div></div>
+    <div class="paso"><div class="num">2</div><div>
+      <h3>{{PASO_2}}</h3><p>{{DESC_PASO_2}}</p></div></div>
+    <div class="paso"><div class="num">3</div><div>
+      <h3>{{PASO_3}}</h3><p>{{DESC_PASO_3}}</p></div></div>
+    <div class="paso"><div class="num">4</div><div>
+      <h3>{{PASO_4}}</h3><p>{{DESC_PASO_4}}</p></div></div>
+
+    <a class="cta" href="{{CHECKOUT}}" onclick="fbq('track','InitiateCheckout');">{{TEXTO_CTA}}</a>
+    <p class="cta-sub">Garantía de {{DIAS_GARANTIA}} días</p>
+  </div>
+</section>
+
+<!-- 9 · QUÉ INCLUYE (KEY 8) -->
+<section>
+  <div class="wrap">
+    <h2>Qué recibes hoy</h2>
+    <img src="img/mockup.webp" alt="{{ALT_MOCKUP}}" loading="lazy">
+    <div class="caja" style="margin-top:20px">
+      <table>
+        <tr><td>{{ITEM_1}}</td><td class="tachado">{{VALOR_1}}</td></tr>
+        <tr><td>{{ITEM_2}}</td><td class="tachado">{{VALOR_2}}</td></tr>
+        <tr><td>{{ITEM_3}}</td><td class="tachado">{{VALOR_3}}</td></tr>
+        <tr><td>{{ITEM_4}}</td><td class="tachado">{{VALOR_4}}</td></tr>
+        <tr class="total"><td>Valor total</td><td class="tachado">{{VALOR_TOTAL}}</td></tr>
+        <tr class="hoy"><td>Hoy</td><td>{{PRECIO}}</td></tr>
+      </table>
+    </div>
+    <a class="cta" href="{{CHECKOUT}}" onclick="fbq('track','InitiateCheckout');">{{TEXTO_CTA}}</a>
+  </div>
+</section>
+
+<!-- 10 · TESTIMONIOS B (uno del sub-avatar ampliado) -->
+<section class="suave">
+  <div class="wrap">
+    <div class="testi"><div class="estrellas">★★★★★</div>
+      <p>"{{TESTIMONIO_3}}"</p><div class="autor">— {{NOMBRE_3}}, {{CIUDAD_3}}</div></div>
+    <div class="testi"><div class="estrellas">★★★★★</div>
+      <p>"{{TESTIMONIO_4}}"</p><div class="autor">— {{NOMBRE_4}}, {{CIUDAD_4}}</div></div>
+    <div class="testi"><div class="estrellas">★★★★★</div>
+      <p>"{{TESTIMONIO_5}}"</p><div class="autor">— {{NOMBRE_5}}, {{CIUDAD_5}}</div></div>
+  </div>
+</section>
+
+<!-- 11 · PARA QUIÉN SÍ / PARA QUIÉN NO -->
+<section>
+  <div class="wrap">
+    <h2>Esto es para ti si…</h2>
+    <ul class="si">
+      <li>{{SI_1}}</li><li>{{SI_2}}</li><li>{{SI_3}}</li><li>{{SI_4}}</li>
+    </ul>
+    <h2 style="margin-top:32px">No es para ti si…</h2>
+    <ul class="no">
+      <li>{{NO_1}}</li><li>{{NO_2}}</li><li>{{NO_3}}</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 12 · GARANTÍA -->
+<section class="suave">
+  <div class="wrap">
+    <div class="garantia">
+      <div class="sello">{{DIAS_GARANTIA}}</div>
+      <h3 style="margin-top:8px">días de garantía</h3>
+      <p>{{TEXTO_GARANTIA}}</p>
+    </div>
+  </div>
+</section>
+
+<!-- 13 · FAQ -->
+<section>
+  <div class="wrap">
+    <h2>Preguntas frecuentes</h2>
+    <details open><summary>{{FAQ_1_P}}</summary><p>{{FAQ_1_R}}</p></details>
+    <details><summary>{{FAQ_2_P}}</summary><p>{{FAQ_2_R}}</p></details>
+    <details><summary>{{FAQ_3_P}}</summary><p>{{FAQ_3_R}}</p></details>
+    <details><summary>{{FAQ_4_P}}</summary><p>{{FAQ_4_R}}</p></details>
+    <details><summary>{{FAQ_5_P}}</summary><p>{{FAQ_5_R}}</p></details>
+  </div>
+</section>
+
+<!-- 14 · CTA FINAL -->
+<section class="oscuro">
+  <div class="wrap centro">
+    <h2>{{TITULO_CIERRE}}</h2>
+    <p class="tenue">{{RECAP_OFERTA}}</p>
+    <p style="font-size:34px;font-weight:900;margin:18px 0 6px">{{PRECIO}}</p>
+    <p class="tenue"><span class="tachado">{{VALOR_TOTAL}}</span> · pago único</p>
+    <p style="margin:20px 0 0"></p>
+    <a class="cta" href="{{CHECKOUT}}" onclick="fbq('track','InitiateCheckout');">{{TEXTO_CTA}}</a>
+    <div class="pagos">Tarjeta · PSE · OXXO · PayPal · Pago seguro con Hotmart</div>
+    <p class="tenue" style="margin-top:22px">Garantía de {{DIAS_GARANTIA}} días. {{TEXTO_GARANTIA_CORTO}}</p>
+  </div>
+</section>
+
+<footer style="padding:28px 0;text-align:center">
+  <div class="wrap">
+    <p class="tenue">© {{ANIO}} {{MARCA}} · <a href="terminos.html" style="color:inherit">Términos</a>
+      · <a href="privacidad.html" style="color:inherit">Privacidad</a></p>
+    <p class="tenue" style="font-size:12px;margin-top:10px">
+      Este sitio no forma parte de Facebook ni de Meta Platforms, Inc.
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>
