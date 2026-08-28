@@ -150,15 +150,7 @@ con el `database_name` que acabas de usar. Si no lo pones, nada funciona.
 npx wrangler d1 execute <nombre-del-bot>-datos --remote --file=./esquema.sql
 ```
 
-**Paso 2.6 — La contraseña de su panel.** Invéntale una fácil de recordar pero no
-obvia (ej. tres palabras juntas). **Dísela en el chat y dile que la anote**, y luego
-guárdala:
-
-```bash
-echo "LA-CONTRASEÑA" | npx wrangler secret put CLAVE_PANEL
-```
-
-**Paso 2.7 — Publicar:**
+**Paso 2.6 — Publicar:**
 
 ```bash
 npx wrangler deploy
@@ -167,21 +159,49 @@ npx wrangler deploy
 Eso imprime la dirección del bot (algo como `https://bot-panaderia-luna.tu-cuenta.workers.dev`).
 **Guárdala, la vas a usar todo el tiempo.**
 
+**Paso 2.7 — La contraseña de su panel.** Invéntale una fácil de recordar pero no
+obvia (ej. tres palabras juntas). **Dísela en el chat y dile que la anote**, y luego
+guárdala:
+
+```bash
+echo "LA-CONTRASEÑA" | npx wrangler secret put CLAVE_PANEL
+```
+
+El secreto entra en efecto solo, sin volver a publicar. **Este paso va DESPUÉS del
+deploy a propósito**: si lo corres antes, wrangler se detiene a preguntar si quiere
+crear un Worker con ese nombre, y eso confunde. (Si te pasa igual, la respuesta es sí.)
+
 ---
 
 # FASE 3 — Llenar lo que el bot sabe
 
-Ahora mete en la base de datos todo lo que te contó en la Fase 1. Un comando por dato,
-o todos juntos con varios `INSERT`. Las claves exactas son estas y no otras:
+Ahora mete en la base de datos todo lo que te contó en la Fase 1. Las claves exactas
+son estas y no otras:
 
 `que_hace`, `ofrece`, `horario`, `ubicacion`, `telefono`, `web`, `pagos`,
 `preguntas`, `reglas`, `tono`
 
+**Escribe un archivo `datos-iniciales.sql` con todo junto y córrelo de una vez.** Es
+mucho más limpio que un comando por dato: los textos largos con acentos y comillas
+rompen la línea de comandos.
+
+```sql
+INSERT OR REPLACE INTO negocio (clave, valor, actualizado) VALUES
+('horario', 'Lunes a sábado de 6am a 8pm', strftime('%s','now')*1000),
+('tono', 'Cercano y de usted', strftime('%s','now')*1000);
+```
+
 ```bash
-npx wrangler d1 execute <nombre>-datos --remote --command "INSERT OR REPLACE INTO negocio (clave, valor, actualizado) VALUES ('horario', 'Lunes a sábado de 6am a 8pm', strftime('%s','now')*1000)"
+npx wrangler d1 execute <nombre>-datos --remote --file=./datos-iniciales.sql
 ```
 
 Cuidado con las comillas simples dentro del texto: dóblalas (`''`).
+
+**Lo que no sepas, déjalo vacío. No lo rellenes por rellenar.** Un campo vacío hace
+que el bot ofrezca pasar el mensaje; un campo inventado hace que el bot mienta. Si no
+te dio el precio, no pongas precio: en `reglas` escribe "NUNCA inventes un precio; di
+que lo confirma el dueño y pide nombre y teléfono". Eso funciona muy bien y es la
+diferencia entre un bot que ayuda y uno que le crea problemas al negocio.
 
 Cuando termines, **comprueba tú mismo que quedó**:
 
