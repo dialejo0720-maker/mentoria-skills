@@ -1,0 +1,26 @@
+{
+  "name": "contenido",
+  "version": "1.0.0",
+  "description": "Contenido y anuncios que venden el producto: guiones de reels, TikToks e historias con hook de 3 segundos, carruseles de Instagram/LinkedIn exportados a PNG, hooks, y el método Recon para encontrar el anuncio ganador (matriz 3×3, prueba de fricción, señales de Meta y escala).",
+  "author": {
+    "name": "Diego"
+  },
+  "repository": "https://github.com/dialejo0720-maker/mentoria-skills",
+  "keywords": [
+    "guiones",
+    "reels",
+    "carrusel",
+    "instagram",
+    "hooks",
+    "meta-ads",
+    "anuncio-ganador",
+    "latam",
+    "espanol",
+    "content-creation",
+    "ad-testing",
+    "claude-code-skill"
+  ],
+  "skills": [
+    "./skills/"
+  ]
+}

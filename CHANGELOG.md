@@ -1,5 +1,21 @@
 # Cambios
 
+## 1.1.0 — cuatro plugins nuevos
+
+El marketplace pasa de 2 a 6 plugins. Las skills que se usan en todo el proceso de crear
+y vender un producto digital ahora se instalan igual que `/ecosistema`.
+
+- **producto-digital**: `/oferta-innegable`, `/check-oferta`, `/vsl` y `/digital-product-autopilot`
+- **imagenes**: `/claude-banana`, prompts e imágenes para Nano Banana / Gemini
+- **video**: `/video-con-vida` (17 efectos para videos a cámara y reglas de movimiento) y
+  `/instalar-pizarra`, que baja `video-pizarra` de Horizontes IA desde su repositorio
+  original y la ajusta para Windows (Python del `.venv`, bash en vez de zsh, carpeta temporal)
+- **contenido**: `/guiones`, `/carrusel`, `/anuncio-ganador` y `/hook-generator`
+- Las skills ya no dependen de rutas fijas: buscan sus scripts en su propia carpeta, así
+  funcionan instaladas como plugin o a mano
+- Los instaladores manuales encuentran cualquier skill del repositorio por su nombre y,
+  si el nombre no existe, muestran la lista completa
+
 ## mi-bot 1.0.0
 
 Primera versión de `/mi-bot`: bot de WhatsApp con IA para negocios, pensado para

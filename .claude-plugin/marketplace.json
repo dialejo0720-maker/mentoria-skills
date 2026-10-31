@@ -5,7 +5,7 @@
   },
   "metadata": {
     "description": "Skills de la mentoría: sistemas guiados para crear, lanzar y escalar productos digitales en LATAM.",
-    "version": "1.0.0"
+    "version": "1.1.0"
   },
   "plugins": [
     {
@@ -62,6 +62,110 @@
         "whatsapp-bot",
         "customer-support",
         "cloudflare-workers",
+        "claude-code-skill"
+      ]
+    },
+    {
+      "name": "producto-digital",
+      "source": "./plugins/producto-digital",
+      "description": "Crea y afina la oferta de un producto digital: oferta innegable (persona, problema, oportunidad, beneficio, mecanismo con nombre propio y creencia central), check rápido de ofertas, VSL con las 8 keys y el sistema completo de autopiloto para analizar competidores, escribir el copy, estructurar la landing y lanzar en Hotmart.",
+      "version": "1.0.0",
+      "author": {
+        "name": "Diego"
+      },
+      "repository": "https://github.com/dialejo0720-maker/mentoria-skills",
+      "category": "marketing",
+      "tags": [
+        "infoproductos",
+        "oferta",
+        "vsl",
+        "copywriting",
+        "hotmart",
+        "mecanismo-unico",
+        "latam",
+        "espanol"
+      ],
+      "keywords": [
+        "offer-design",
+        "sales-letter",
+        "claude-code-skill"
+      ]
+    },
+    {
+      "name": "imagenes",
+      "source": "./plugins/imagenes",
+      "description": "Prompts e imágenes con IA para productos digitales y anuncios: convierte una idea vaga en un master prompt para Nano Banana / Gemini (también Midjourney, DALL-E y Stable Diffusion), con 9 modos, presets de marca y generación directa opcional con la API de Google. Basada en claude-banana (MIT).",
+      "version": "1.0.0",
+      "author": {
+        "name": "Diego"
+      },
+      "repository": "https://github.com/dialejo0720-maker/mentoria-skills",
+      "category": "design",
+      "tags": [
+        "imagenes-ia",
+        "nano-banana",
+        "gemini",
+        "prompts",
+        "creativos",
+        "anuncios",
+        "espanol"
+      ],
+      "keywords": [
+        "image-prompts",
+        "ai-images",
+        "claude-code-skill"
+      ]
+    },
+    {
+      "name": "video",
+      "source": "./plugins/video",
+      "description": "Videos animados y con efectos: 17 efectos por capas para videos hablando a cámara más las reglas de movimiento que hacen que nada se vea robótico (video-con-vida), y el instalador de video-pizarra de Horizontes IA (videos tipo pizarrón con mascota, música y voz) con los ajustes para Windows.",
+      "version": "1.0.0",
+      "author": {
+        "name": "Diego"
+      },
+      "repository": "https://github.com/dialejo0720-maker/mentoria-skills",
+      "category": "video",
+      "tags": [
+        "video",
+        "reels",
+        "efectos",
+        "pizarra",
+        "whiteboard",
+        "animacion",
+        "edicion",
+        "espanol"
+      ],
+      "keywords": [
+        "video-editing",
+        "whiteboard-animation",
+        "claude-code-skill"
+      ]
+    },
+    {
+      "name": "contenido",
+      "source": "./plugins/contenido",
+      "description": "Contenido y anuncios que venden el producto: guiones de reels, TikToks e historias con hook de 3 segundos, carruseles de Instagram/LinkedIn exportados a PNG, hooks, y el método Recon para encontrar el anuncio ganador (matriz 3×3, prueba de fricción, señales de Meta y escala).",
+      "version": "1.0.0",
+      "author": {
+        "name": "Diego"
+      },
+      "repository": "https://github.com/dialejo0720-maker/mentoria-skills",
+      "category": "marketing",
+      "tags": [
+        "guiones",
+        "reels",
+        "carrusel",
+        "instagram",
+        "hooks",
+        "meta-ads",
+        "anuncio-ganador",
+        "latam",
+        "espanol"
+      ],
+      "keywords": [
+        "content-creation",
+        "ad-testing",
         "claude-code-skill"
       ]
     }

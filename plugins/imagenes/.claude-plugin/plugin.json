@@ -1,0 +1,24 @@
+{
+  "name": "imagenes",
+  "version": "1.0.0",
+  "description": "Prompts e imágenes con IA para productos digitales y anuncios: convierte una idea vaga en un master prompt para Nano Banana / Gemini (también Midjourney, DALL-E y Stable Diffusion), con 9 modos, presets de marca y generación directa opcional con la API de Google. Basada en claude-banana (MIT).",
+  "author": {
+    "name": "Diego"
+  },
+  "repository": "https://github.com/dialejo0720-maker/mentoria-skills",
+  "keywords": [
+    "imagenes-ia",
+    "nano-banana",
+    "gemini",
+    "prompts",
+    "creativos",
+    "anuncios",
+    "espanol",
+    "image-prompts",
+    "ai-images",
+    "claude-code-skill"
+  ],
+  "skills": [
+    "./skills/"
+  ]
+}

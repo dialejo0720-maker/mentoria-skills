@@ -1,0 +1,25 @@
+{
+  "name": "producto-digital",
+  "version": "1.0.0",
+  "description": "Crea y afina la oferta de un producto digital: oferta innegable (persona, problema, oportunidad, beneficio, mecanismo con nombre propio y creencia central), check rápido de ofertas, VSL con las 8 keys y el sistema completo de autopiloto para analizar competidores, escribir el copy, estructurar la landing y lanzar en Hotmart.",
+  "author": {
+    "name": "Diego"
+  },
+  "repository": "https://github.com/dialejo0720-maker/mentoria-skills",
+  "keywords": [
+    "infoproductos",
+    "oferta",
+    "vsl",
+    "copywriting",
+    "hotmart",
+    "mecanismo-unico",
+    "latam",
+    "espanol",
+    "offer-design",
+    "sales-letter",
+    "claude-code-skill"
+  ],
+  "skills": [
+    "./skills/"
+  ]
+}

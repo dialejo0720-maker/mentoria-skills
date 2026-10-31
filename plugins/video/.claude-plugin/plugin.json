@@ -1,0 +1,25 @@
+{
+  "name": "video",
+  "version": "1.0.0",
+  "description": "Videos animados y con efectos: 17 efectos por capas para videos hablando a cámara más las reglas de movimiento que hacen que nada se vea robótico (video-con-vida), y el instalador de video-pizarra de Horizontes IA (videos tipo pizarrón con mascota, música y voz) con los ajustes para Windows.",
+  "author": {
+    "name": "Diego"
+  },
+  "repository": "https://github.com/dialejo0720-maker/mentoria-skills",
+  "keywords": [
+    "video",
+    "reels",
+    "efectos",
+    "pizarra",
+    "whiteboard",
+    "animacion",
+    "edicion",
+    "espanol",
+    "video-editing",
+    "whiteboard-animation",
+    "claude-code-skill"
+  ],
+  "skills": [
+    "./skills/"
+  ]
+}

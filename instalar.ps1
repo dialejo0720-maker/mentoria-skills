@@ -3,7 +3,7 @@
 #
 # Uso:  clic derecho -> Ejecutar con PowerShell        (instala ecosistema)
 # O:    powershell -ExecutionPolicy Bypass -File .\instalar.ps1
-# O:    powershell -ExecutionPolicy Bypass -File .\instalar.ps1 -Skill mi-bot
+# O:    powershell -ExecutionPolicy Bypass -File .\instalar.ps1 -Skill mi-bot   (o vsl, carrusel, video-con-vida...)
 
 param(
     [string]$Skill = "ecosistema"
@@ -31,9 +31,10 @@ $raiz = [System.IO.Path]::GetFullPath($raiz)
 $origen = $null
 $candidatos = @(
     (Join-Path $raiz "skills\$Skill"),
-    (Join-Path $raiz "plugins\$Skill\skills\$Skill"),
-    $raiz
+    (Join-Path $raiz "plugins\$Skill\skills\$Skill")
 )
+$candidatos += @(Get-ChildItem (Join-Path $raiz "plugins\*\skills\$Skill") -Directory -ErrorAction SilentlyContinue | ForEach-Object { $_.FullName })
+$candidatos += $raiz
 foreach ($c in $candidatos) {
     if (Test-Path (Join-Path $c "SKILL.md")) { $origen = [System.IO.Path]::GetFullPath($c); break }
 }
@@ -41,7 +42,8 @@ foreach ($c in $candidatos) {
 if ($null -eq $origen) {
     Write-Host "  ERROR: no encuentro la skill '$Skill'." -ForegroundColor Red
     Write-Host "  Ejecuta el instalador desde la raiz de la carpeta descargada."
-    Write-Host "  Skills disponibles: ecosistema, mi-bot"
+    Write-Host "  Skills disponibles:"
+    Get-ChildItem (Join-Path $raiz "skills\*\SKILL.md"), (Join-Path $raiz "plugins\*\skills\*\SKILL.md") -ErrorAction SilentlyContinue | ForEach-Object { Write-Host "    $($_.Directory.Name)" }
     Write-Host ""
     Pausa
     exit 1

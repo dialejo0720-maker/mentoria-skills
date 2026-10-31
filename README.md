@@ -2,10 +2,18 @@
 
 Sistemas guiados para Claude Code. Se instalan una vez y quedan disponibles en tu computador.
 
-| Skill | Qué hace |
-|---|---|
-| `/ecosistema` | Construye de cero el ecosistema completo de un producto digital: competencia → producto → keys → landing → creativos → campañas → producto real → order bumps |
-| `/mi-bot` | Arma un bot de WhatsApp con IA para tu negocio, gratis y en tu propia cuenta. Con panel para ver conversaciones y contactos, y para cambiar precios sin tocar código |
+| Plugin | Skills que trae | Qué hace |
+|---|---|---|
+| `ecosistema` | `/ecosistema` | Construye de cero el ecosistema completo de un producto digital: competencia → producto → keys → landing → creativos → campañas → producto real → order bumps |
+| `producto-digital` | `/oferta-innegable` `/check-oferta` `/vsl` `/digital-product-autopilot` | Arma y afina la oferta: tu mecanismo con nombre propio, el check de la oferta, el VSL con las 8 keys, el copy y la landing |
+| `imagenes` | `/claude-banana` | Convierte una idea en un prompt de imagen profesional para Nano Banana / Gemini, y si quieres genera la imagen |
+| `video` | `/video-con-vida` `/instalar-pizarra` | 17 efectos para videos hablando a cámara, y los videos animados tipo pizarrón |
+| `contenido` | `/guiones` `/carrusel` `/anuncio-ganador` `/hook-generator` | Guiones de reels e historias, carruseles listos para subir, hooks y el método para encontrar tu anuncio ganador |
+| `mi-bot` | `/mi-bot` | Arma un bot de WhatsApp con IA para tu negocio, gratis y en tu propia cuenta. Con panel para ver conversaciones y contactos, y para cambiar precios sin tocar código |
+
+**El orden del proceso:** `ecosistema` te lleva de la mano por todo el lanzamiento. Las demás
+son las herramientas de cada parte: `producto-digital` para la oferta, `imagenes` y `video`
+para los creativos, `contenido` para lo orgánico y los anuncios.
 
 ---
 
@@ -19,17 +27,21 @@ Abre Claude Code y escribe primero esto:
 /plugin marketplace add dialejo0720-maker/mentoria-skills
 ```
 
-Y después, la skill que quieras (puedes instalar las dos):
+Y después, los plugins que quieras (puedes instalarlos todos, uno por línea):
 
 ```
 /plugin install ecosistema@mentoria
-```
-
-```
+/plugin install producto-digital@mentoria
+/plugin install imagenes@mentoria
+/plugin install video@mentoria
+/plugin install contenido@mentoria
 /plugin install mi-bot@mentoria
 ```
 
-Listo. Ya puedes escribir `/ecosistema` o `/mi-bot` en cualquier proyecto.
+Listo. Ya puedes escribir `/ecosistema`, `/vsl`, `/carrusel`… en cualquier proyecto.
+
+> **Videos tipo pizarrón:** después de instalar `video`, escribe `/instalar-pizarra` una vez.
+> Baja la skill `video-pizarra` (gratis, de Horizontes IA) y la deja lista para Windows.
 
 > Si te pregunta si confías en el marketplace, acepta.
 > Después de instalar, cierra Claude Code y vuélvelo a abrir.
@@ -63,7 +75,7 @@ Cuando salga una versión nueva:
    ```
    powershell -ExecutionPolicy Bypass -File .\instalar.ps1
    ```
-   Para instalar la otra skill, agrégale el nombre:
+   Para instalar otra skill, agrégale el nombre (`mi-bot`, `vsl`, `carrusel`, `video-con-vida`…):
    ```
    powershell -ExecutionPolicy Bypass -File .\instalar.ps1 -Skill mi-bot
    ```
@@ -71,7 +83,7 @@ Cuando salga una versión nueva:
    ```
    bash instalar.sh
    ```
-   Para la otra skill:
+   Para otra skill:
    ```
    bash instalar.sh mi-bot
    ```
@@ -81,8 +93,9 @@ También puedes copiar a mano la carpeta de la skill dentro de:
 - **Windows:** `C:\Users\TU_USUARIO\.claude\skills\`
 - **Mac / Linux:** `~/.claude/skills/`
 
-Debe quedar así: `.claude/skills/ecosistema/SKILL.md` (o `.claude/skills/mi-bot/SKILL.md`).
-La carpeta de `/mi-bot` está en `plugins/mi-bot/skills/mi-bot`.
+Debe quedar así: `.claude/skills/ecosistema/SKILL.md` (o `.claude/skills/vsl/SKILL.md`, etc.).
+Las demás skills están en `plugins/<plugin>/skills/<skill>`. Si no sabes el nombre, corre el
+instalador con un nombre cualquiera y te muestra la lista.
 
 ---
 
@@ -206,6 +219,63 @@ la pestaña Mi negocio.
 pestaña Mi negocio, cambias y guardas.
 
 **¿Puedo tener un bot para cada negocio?** Sí. Carpeta nueva y `/mi-bot` otra vez.
+
+---
+
+## Las herramientas del proceso
+
+Cada skill se activa sola cuando pides lo que hace ("revisa mi oferta", "hazme un carrusel"),
+o la llamas por su nombre.
+
+### `producto-digital` — la oferta
+
+| Skill | Para qué |
+|---|---|
+| `/oferta-innegable` | Le pasas tu verbalización (transcripción de tu Zoom o nota de voz) y sale tu oferta completa: persona, problema, oportunidad, beneficio, **mecanismo con nombre propio** y creencia central |
+| `/check-oferta` | Revisa una oferta ya escrita: qué sirve, qué arreglar y el arreglo listo para pegar |
+| `/vsl` | El guion de tu video de ventas con las 8 keys |
+| `/digital-product-autopilot` | Análisis de competidores, copy de alta conversión, estructura de landing y lanzamiento en Hotmart |
+
+### `imagenes` — los creativos
+
+`/claude-banana` convierte "quiero una foto de mi ebook en una mesa" en un prompt profesional
+para Nano Banana / Gemini. **Gratis** si pegas el prompt en gemini.google.com. Si quieres que
+genere la imagen sola, necesitas una clave de Google AI Studio (aistudio.google.com) con
+facturación activa y Python instalado.
+
+### `video` — los videos
+
+| Skill | Para qué |
+|---|---|
+| `/video-con-vida` | Le pone efectos a un video tuyo hablando a cámara (zoom a la cara, texto detrás de ti, checklist, gráfica que crece… 17 en total) |
+| `/instalar-pizarra` | Instala `/video-pizarra`: videos animados tipo pizarrón con mascota, música y voz, sin grabarte |
+
+**Estas necesitan programas instalados** (Claude te dice cuáles faltan y te pasa el enlace):
+Python, ffmpeg y Node.js. En Windows, también Git (trae Git Bash). La música con IA (Suno) y la
+transcripción precisa (AssemblyAI) son opcionales y de pago aparte.
+
+`video-pizarra` es una skill gratuita de **Horizontes IA**
+([github.com/santmun/video-pizarra](https://github.com/santmun/video-pizarra)). No viene copiada
+aquí: `/instalar-pizarra` la baja de su repositorio original y le hace los ajustes para Windows.
+
+### `contenido` — lo que vende el producto
+
+| Skill | Para qué |
+|---|---|
+| `/guiones` | Guiones de reels, TikToks, historias y videos largos: hook de 3 segundos, texto en pantalla, CTA |
+| `/carrusel` | Carruseles de Instagram/LinkedIn con tu marca, exportados a PNG listos para subir (usa Chrome o Edge) |
+| `/hook-generator` | Ganchos para la primera línea de tus posts y videos |
+| `/anuncio-ganador` | El método Recon: matriz 3×3 de versiones de oferta, prueba de fricción con USD 5 por versión, qué apagar y cómo escalar |
+
+---
+
+## Créditos
+
+- `claude-banana` está basada en [claude-banana](https://github.com/Hainrixz/claude-banana)
+  (licencia MIT, incluida en su carpeta).
+- `video-pizarra` es de Horizontes IA y se instala desde su repositorio original.
+- Las reglas de movimiento de `video-con-vida` se basan en las guías de @SantiMunozIA y
+  Máquina IA (@ninodirector).
 
 ---
 

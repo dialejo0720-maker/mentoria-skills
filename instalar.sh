@@ -3,7 +3,7 @@
 # Solo hace falta si NO quieres instalarlas como plugin.
 #
 # Uso:  bash instalar.sh            -> instala ecosistema
-#       bash instalar.sh mi-bot     -> instala mi-bot
+#       bash instalar.sh mi-bot     -> instala mi-bot (o cualquier otra: vsl, carrusel, video-con-vida...)
 
 set -euo pipefail
 
@@ -19,14 +19,15 @@ RAIZ="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 # La skill puede estar en skills/<nombre>, en plugins/<nombre>/skills/<nombre>,
 # o junto al script (si bajaron la carpeta suelta)
 ORIGEN=""
-for C in "$RAIZ/skills/$SKILL" "$RAIZ/plugins/$SKILL/skills/$SKILL" "$RAIZ"; do
+for C in "$RAIZ/skills/$SKILL" "$RAIZ/plugins/$SKILL/skills/$SKILL" "$RAIZ"/plugins/*/skills/"$SKILL" "$RAIZ"; do
   if [ -f "$C/SKILL.md" ]; then ORIGEN="$C"; break; fi
 done
 
 if [ -z "$ORIGEN" ]; then
   echo "  ERROR: no encuentro la skill '$SKILL'."
   echo "  Ejecuta el instalador desde la raiz de la carpeta descargada."
-  echo "  Skills disponibles: ecosistema, mi-bot"
+  echo "  Skills disponibles:"
+  for S in "$RAIZ"/skills/*/SKILL.md "$RAIZ"/plugins/*/skills/*/SKILL.md; do [ -f "$S" ] && echo "    $(basename "$(dirname "$S")")"; done
   echo ""
   exit 1
 fi
